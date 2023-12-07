@@ -1148,7 +1148,11 @@ class TerminalBuffer:
         else:
             for y in range(offset, offset + self.col_len):
                 for x in range(self.row_len):
-                    buf[y][x] = None
+                    try:
+                        buf[y][x] = None
+                    except:
+                        print_exc()
+                        pass
 
     def erase_line(self, mode=3):
         buf = self._buffer
